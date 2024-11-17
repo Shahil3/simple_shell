@@ -11,6 +11,8 @@ void shell_no_interactive(void)
     command_t *cmd_list;
     int status = 1;
 
+    load_history();
+
     do {
         line = read_line();
 
@@ -42,6 +44,8 @@ void shell_no_interactive(void)
         }
 
         free(line);
+
+    save_history();
 
     } while (status);
 }

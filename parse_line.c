@@ -163,6 +163,13 @@ command_t *parse_line(char *line)
             }
         }
         cmd->args[position] = NULL;
+        
+        if (cmd->args[0] != NULL && strcmp(cmd->args[0], "history") == 0)
+        {
+            print_history();  // Print the history if the command is 'history'
+            free(cmd); 
+            return NULL;
+        }
 
         if (!head)
             head = cmd;

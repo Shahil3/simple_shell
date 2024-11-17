@@ -2,7 +2,6 @@
 
 #include "shell.h"
 #include <readline/readline.h>
-#include <readline/history.h>
 
 /**
  * read_line - Read a line from stdin, using readline if interactive
@@ -22,7 +21,7 @@ char *read_line(void)
 
         if (line && *line)
         {
-            add_history(line);
+            add_to_history(line);
         }
     }
     else

@@ -5,10 +5,10 @@ LIBS = -lreadline
 all: simple_shell
 
 simple_shell: main.o shell_interactive.o shell_no_interactive.o \
-              read_line.o parse_line.o execute_command.o builtins.o autocomplete.o
+              read_line.o parse_line.o execute_command.o builtins.o autocomplete.o history.o
 	$(CC) $(CFLAGS) -o simple_shell main.o shell_interactive.o \
 	shell_no_interactive.o read_line.o parse_line.o execute_command.o \
-	builtins.o autocomplete.o $(LIBS)
+	builtins.o autocomplete.o history.o $(LIBS)
 
 main.o: main.c shell.h
 	$(CC) $(CFLAGS) -c main.c
@@ -33,6 +33,9 @@ builtins.o: builtins.c shell.h
 
 autocomplete.o: autocomplete.c shell.h
 	$(CC) $(CFLAGS) -c autocomplete.c
+	
+history.o: history.c shell.h
+	$(CC) $(CFLAGS) -c history.c
 
 clean:
 	rm -f *.o simple_shell

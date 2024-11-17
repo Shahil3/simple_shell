@@ -8,6 +8,8 @@ void shell_interactive(void)
     char *line;
     command_t *cmd_list;
     int status = 1;
+    
+    load_history();
 
     do {
         // printf("simple_prompt$ ");
@@ -42,6 +44,8 @@ void shell_interactive(void)
         }
 
         free(line);
+        
+        save_history();
 
     } while (status);
 }

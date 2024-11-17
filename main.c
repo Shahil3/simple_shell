@@ -2,7 +2,6 @@
 
 #include "shell.h"
 #include <readline/readline.h>
-#include <readline/history.h>
 
 /* Function prototypes */
 char *command_generator(const char *, int);

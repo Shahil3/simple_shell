@@ -11,11 +11,14 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <readline/readline.h>
-#include <readline/history.h>
 
 /*---DEFINITIONS---*/
 #define TOK_BUFSIZE 64
 #define TOK_DELIM " \t\r\n\a"
+#define MAX_HISTORY 100
+
+extern char *history[MAX_HISTORY];  // Array to store history
+extern int history_count;           // Counter to keep track of history
 
 /*---DATA STRUCTURES---*/
 typedef struct command_t {
@@ -52,5 +55,11 @@ int own_env(char **args);
 int own_help(char **args);
 int own_exit(char **args);
 int own_echo(char **args);  // Added prototype for own_echo
+
+/* history */
+void load_history(void);
+void save_history(void);
+void print_history(void);
+void add_to_history(char *line);
 
 #endif
