@@ -27,6 +27,7 @@ int own_help(char **args)
     printf("  help\n");
     printf("  exit\n");
     printf("  echo\n");  // Added echo to the help menu
+    printf("  history\n"); 
     printf("Type 'help [command]' for more information on a specific command.\n");
     return 0;
 }
